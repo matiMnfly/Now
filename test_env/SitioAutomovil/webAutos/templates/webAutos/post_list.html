@@ -10,35 +10,36 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/webAutos.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script> 
+        $(document).ready(function(){
+            $("#flip").click(function(){
+                $("#panel").slideToggle("slow");
+            });
+        });
+        </script>
 </head>
 <body>
-    <h1 class="hola">Hola Mundo</h1>
-    <hr>
+    <header>
+        <nav>
+            <div id="arriba"><h1 id="Log">Venta de Vehículos</h1></div>
+        </nav>     
+    </header>
+<hr> <br>
     {% for post in posts %}
-    <button onclick="myFunction('Demo3')" class="w3-btn w3-block w3-red"><h1>{{ post.titulo }}</h1></button>
-    <div  id="Demo3" class="w3-hide w3-container w3-center w3-pale-red"> 
-        <p>{{ post.Marca}}</p>
-        <p>{{ post.Modelo}}</p>
-        <p>{{ post.Año_automovil}}</p>
-        <p>{{ post.Color}}</p>
-        <p>{{ post.Numero_puertas}}</p>
-        <p>{{ post.Descripcion}}</p>
+    <div id="flip"><h1><a>{{ post.titulo }}</a></h1></div>
+    <div id="panel">
+        <p>Marca: {{ post.Marca}}</p>
+        <p>Modelo: {{ post.Modelo}}</p>
+        <p>Año del automovil: {{ post.Año_automovil}}</p>
+        <p>Color: {{ post.Color}}</p>
+        <p>Numero de puertas: {{ post.Numero_puertas}}</p>
+        <p>Descripcion: {{ post.Descripcion}}</p>
         <p>Fecha de publicación: {{ post.Fecha_publicacion }}</p>
-        <p>{{ post.Precio|linebreaksbr }}</p>
+        <p>Precio: {{ post.Precio|linebreaksbr }}</p>
     </div>
 {% endfor %}
-
-<script>
-    function myFunction(id) {
-        var x = document.getElementById(id);
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-        } else { 
-            x.className = x.className.replace(" w3-show", "");
-        }
-    }
-    </script>
-
 
 </body>
 </html>
